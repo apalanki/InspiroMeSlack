@@ -4,6 +4,9 @@ Slack integration with InspiroBot.me
 
 You can use the currently hosted Heroku App below or you can clone the repo yourself and upload the Node.js app to your own private webserver and configure somewhat like it is below:
 
+## Local development
+Use ngrok (https://api.slack.com/tutorials/tunneling-with-ngrok) to test commands locally.
+
 ##Outgoing WebHooks
 This feature only works in public channels. Within Slack Integrations choose Outgoing WebHooks and setup something similar to this:
 ![Image of Outgoing WebHooks Settings](http://i.imgur.com/fdLHTT4.png)
