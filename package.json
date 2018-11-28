@@ -1,5 +1,5 @@
 {
-  "name": "InspiroMeSlack",
+  "name": "inspirome-slack",
   "version": "1.0.0",
   "description": "Slack integration with InspiroBot.me",
   "main": "app.js",
@@ -17,12 +17,12 @@
   },
   "homepage": "https://github.com/apalanki/InspiroMeSlack#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "request": "^2.85.0"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
   },
   "engines": {
-    "node": "v8.9.4",
-    "npm": "v5.6.0"
+    "node": "v8.x",
+    "npm": "v6.x"
   }
 }
