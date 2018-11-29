@@ -21,10 +21,13 @@ To configure request URL (indicated as 1, in image below), you have the followin
 - Clone the repo yourself and upload the Node.js app to your own private webserver and configure like it is below:
 ![Image of Slash Command Settings](https://i.imgur.com/yMRLEbc.png)
 
-Once added, you will be presented with an option to shuffle or cancel before posting to channel.
-![Once added you have the ability to shuffle](https://i.imgur.com/mVDAWef.png)
+Once added, when you call `/inspire`, you will be presented with following options visible only to yourself:
+- *Send*, send the image shown to channel, so that its visible for everyone.
+- *Reshuffle*, change the image from Inspirobot to something else, visible only to you.
+- *Cancel*, cancel sending an image. The message will be deleted without sending anything.
+![Once added you have the ability to shuffle](https://i.imgur.com/mVDAWef.png?1)
 
-Once you hit send, the posted message looks this way:
+Once you hit Send, the posted message looks this way:
 ![Posted message](https://i.imgur.com/dr955Yw.png)
 
 Image for icon: http://inspirobot.me/website/images/inspirobot-dark-green.png
