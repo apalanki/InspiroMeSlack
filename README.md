@@ -9,7 +9,7 @@ Slack integration with InspiroBot.me
 ## Local development
 Use ngrok (https://api.slack.com/tutorials/tunneling-with-ngrok) to test commands locally.
 
-##Slash Commands
+## Slash Commands
 This works in all channels, within Slack Integration Choose Slash Command and setup something similar to this:
 ![Create an App and enable slash command](https://i.imgur.com/aADWoQV.png?1)
 
