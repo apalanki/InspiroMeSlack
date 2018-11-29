@@ -28,6 +28,8 @@ Once added, when you call `/inspire`, you will be presented with following optio
 ![Once added you have the ability to shuffle](https://i.imgur.com/mVDAWef.png?1)
 
 Once you hit Send, the posted message looks this way:
-![Posted message](https://i.imgur.com/dr955Yw.png)
+<p align="center">
+    <img src="https://i.imgur.com/dr955Yw.png" alt="Posted image"/>
+</p>
 
-Image for icon: http://inspirobot.me/website/images/inspirobot-dark-green.png
+Image for Inspirobot Icon: http://inspirobot.me/website/images/inspirobot-dark-green.png
