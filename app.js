@@ -1,10 +1,7 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var outgoing = require('./outgoing');
-var incoming = require('./incoming');
-
-var app = express();
-var port = process.env.PORT || 3000;
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = process.env.PORT || 3000;
 
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,5 +19,4 @@ app.listen(port, function () {
   console.log('Slack bot listening on port ' + port);
 });
 
-app.post('/inspirobot', outgoing);
-app.post('/slash', incoming);
+app.post('/slash', require('./slash'));
