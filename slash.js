@@ -3,9 +3,7 @@ const agent = require('superagent');
 const shuffleCallbackId = 'inspirobot_shuffle';
 const inspirobotUrl = 'http://inspirobot.me/api?generate=true';
 
-function getUserId(body) {
-    return '<@' + (body.user_id || body.user.id) + '>: ';
-}
+const getUserId = body => '<@' + (body.user_id || body.user.id) + '>: ';
 
 function requestInspiration() {
     return agent.get(inspirobotUrl)
@@ -42,10 +40,10 @@ async function handleInitialRequest(req) {
         ]
     };
 
-    await postResponse(botPayload, body.response_url);
+    return postResponse(botPayload, body.response_url);
 }
 
-async function handleSendRequest(payload) {
+function handleSendRequest(payload) {
     const image = payload.actions[0].value;
     const botPayload = {
         response_type: 'in_channel', channel: payload.channel_id,
@@ -55,12 +53,11 @@ async function handleSendRequest(payload) {
             text: image, image_url: image
         }]
     };
-    await postResponse(botPayload, payload.response_url);
+    return postResponse(botPayload, payload.response_url);
 }
 
-async function handleCancelRequest(payload) {
-    const botPayload = {delete_original: true};
-    await postResponse(botPayload, payload.response_url);
+function handleCancelRequest(payload) {
+    return postResponse({delete_original: true}, payload.response_url);
 }
 
 async function handleShuffleActionRequest(payload) {
