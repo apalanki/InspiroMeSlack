@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // test route
-app.get('/', function (req, res) { res.status(200).send('Hello world!') });
+app.get('/', function (req, res) { res.status(200).send('Ready to Inspire!') });
 
 // error handler
 app.use(function (err, req, res, next) {
@@ -16,7 +16,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(port, function () {
-  console.log('Slack bot listening on port ' + port);
+  console.log('InspiroBot listening on port ' + port);
 });
 
 app.post('/slash', require('./slash'));
