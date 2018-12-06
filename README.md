@@ -2,7 +2,7 @@
 # InspiroBotSlack
 Slack integration with InspiroBot.me
 
-## How is this different than `bhberson/InspiroBotSlack`:
+## How is this different than [bhberson/InspiroBotSlack](https://github.com/bhberson/InspiroBotSlack):
 - There is shuffle capability before posting to a channel. Since there are NSFW images, it helps to verify before posting.
 - This is maintained while the other isn't. I tried submitting PR's to improve the other project but the author did not respond.
 
