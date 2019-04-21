@@ -37,3 +37,6 @@ Once you hit Send, the posted message looks this way:
 </p>
 
 Image for Inspirobot Icon: http://inspirobot.me/website/images/inspirobot-dark-green.png
+
+## Contributing
+PR's are always welcome! :)
