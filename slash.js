@@ -1,5 +1,5 @@
 const {getNewInspiration, postSlackResponse} = require('./integrations');
-const {getAction, getUserId, shuffleCallbackId} = require('slackUtils');
+const {getAction, getUserId, shuffleCallbackId} = require('./slackUtils');
 
 async function handleInitialRequest(req) {
     const inspireImage = await getNewInspiration();
