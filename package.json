@@ -19,10 +19,13 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "superagent": "^4.0.0"
+    "superagent": "^5.0.2"
   },
   "engines": {
-    "node": "v8.x",
+    "node": "v11.x",
     "npm": "v6.x"
+  },
+  "devDependencies": {
+    "prettier": "^1.17.0"
   }
 }

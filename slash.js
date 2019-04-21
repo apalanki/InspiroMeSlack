@@ -1,26 +1,8 @@
-const agent = require('superagent');
-
-const shuffleCallbackId = 'inspirobot_shuffle';
-const inspirobotUrl = 'http://inspirobot.me/api?generate=true';
-
-const getUserId = body => '<@' + (body.user_id || body.user.id) + '>: ';
-
-function requestInspiration() {
-    return agent.get(inspirobotUrl)
-        .then(res => res.text);
-}
-
-function postResponse(payload, responseUrl) {
-    return agent.post(responseUrl)
-        .send(JSON.stringify(payload));
-}
-
-const getAction = (buttonLabel, style, value) => ({
-    name: buttonLabel.toLowerCase(), text: buttonLabel, type: 'button', value: value || buttonLabel.toLowerCase(), style
-});
+const {getNewInspiration, postSlackResponse} = require('./integrations');
+const {getAction, getUserId, shuffleCallbackId} = require('slackUtils');
 
 async function handleInitialRequest(req) {
-    const inspireImage = await requestInspiration();
+    const inspireImage = await getNewInspiration();
     const image = inspireImage || 'http://inspirobot.me/website/images/inspirobot-dark-green.png';
 
     const body = req.body || req;
@@ -30,34 +12,38 @@ async function handleInitialRequest(req) {
         mrkdwn: true,
         attachments: [
             {
-                text: image, image_url: image, attachment_type: 'default',
+                text: image,
+                image_url: image,
+                attachment_type: 'default',
                 callback_id: shuffleCallbackId,
-                actions: [
-                    getAction('Send', 'primary', image),
-                    getAction('Reshuffle'), getAction('Cancel', 'danger')
-                ]
+                actions: [getAction('Send', 'primary', image), getAction('Reshuffle'), getAction('Cancel', 'danger')]
             }
         ]
     };
 
-    return postResponse(botPayload, body.response_url);
+    return postSlackResponse(botPayload, body.response_url);
 }
 
 function handleSendRequest(payload) {
     const image = payload.actions[0].value;
     const botPayload = {
-        response_type: 'in_channel', channel: payload.channel_id,
-        replace_original: false, delete_original: true,
+        response_type: 'in_channel',
+        channel: payload.channel_id,
+        replace_original: false,
+        delete_original: true,
         text: getUserId(payload) + 'via /inspire',
-        attachments: [{
-            text: image, image_url: image
-        }]
+        attachments: [
+            {
+                text: image,
+                image_url: image
+            }
+        ]
     };
-    return postResponse(botPayload, payload.response_url);
+    return postSlackResponse(botPayload, payload.response_url);
 }
 
 function handleCancelRequest(payload) {
-    return postResponse({delete_original: true}, payload.response_url);
+    return postSlackResponse({delete_original: true}, payload.response_url);
 }
 
 async function handleShuffleActionRequest(payload) {
@@ -67,11 +53,11 @@ async function handleShuffleActionRequest(payload) {
     } else if (action.name === 'reshuffle') {
         await handleInitialRequest(payload);
     } else if (action.name === 'cancel') {
-        await handleCancelRequest(payload)
+        await handleCancelRequest(payload);
     }
 }
 
-module.exports = async function (req, res) {
+module.exports = async function(req, res) {
     try {
         if (req && req.body && req.body.payload) {
             const payload = JSON.parse(req.body.payload);
@@ -81,9 +67,14 @@ module.exports = async function (req, res) {
         }
     } catch (err) {
         console.error(err.stack);
-        postResponse({
-            response_type: 'ephemeral', text: 'Sorry, that didnt work. Please try again.', channel: req.body.channel_id
-        }, req.body.response_url);
+        await postSlackResponse(
+            {
+                response_type: 'ephemeral',
+                text: 'Sorry, that didnt work. Please try again.',
+                channel: req.body.channel_id
+            },
+            req.body.response_url
+        );
     }
     return res.status(200).end();
 };
