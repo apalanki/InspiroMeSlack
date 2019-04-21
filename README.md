@@ -1,10 +1,14 @@
 ![InspiroBot](http://i.imgur.com/uPh4T8d.png)
+
 # InspiroBotSlack
 Slack integration with InspiroBot.me
 
-## How is this different than [bhberson/InspiroBotSlack](https://github.com/bhberson/InspiroBotSlack):
-- There is shuffle capability before posting to a channel. Since there are NSFW images, it helps to verify before posting.
-- This is maintained while the other isn't. I tried submitting PR's to improve the other project but the author did not respond.
+## Key Features:
+- Post a random image from [Inspiro Bot](http://inspirobot.me) to any given Slack channel in your workspace.
+- Before posting to a slack channel, *only you* can:
+    - Shuffle for another image, if the current image does not suit your taste.
+    - Cancel sending the image to the channel.
+    - Send the current image to the channel for everyone to see.
 
 ## Local development
 Use ngrok (https://api.slack.com/tutorials/tunneling-with-ngrok) to test commands locally.
