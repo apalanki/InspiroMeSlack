@@ -5,7 +5,7 @@ Slack integration with InspiroBot.me
 
 ## Key Features:
 - Post a random image from [Inspiro Bot](http://inspirobot.me) to any given Slack channel in your workspace.
-- Before posting to a slack channel, *only you* can:
+- Before posting to a slack channel, *only the person who invoked it* can:
     - Shuffle for another image, if the current image does not suit your taste.
     - Cancel sending the image to the channel.
     - Send the current image to the channel for everyone to see.
