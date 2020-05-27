@@ -4,7 +4,8 @@
   "description": "Slack integration with InspiroBot.me",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,13 +20,13 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "superagent": "^5.0.2"
+    "superagent": "^5.2.2"
   },
   "engines": {
     "node": "v11.x",
     "npm": "v6.x"
   },
   "devDependencies": {
-    "prettier": "^1.17.0"
+    "prettier": "^2.0.5"
   }
 }
